@@ -5,12 +5,6 @@
   font-family: 'Georgia', 'Times New Roman', serif;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
 /* Main Footer Section */
 .footer-main {
   padding: 60px 0 40px;
