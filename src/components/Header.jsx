@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ShoppingBag, Search, User, Heart, Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
@@ -8,20 +9,16 @@ const Header = () => {
   const [cartCount] = useState(3); // Example cart count
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   return (
     <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
+      
       {/* Top Bar */}
       <div className="header-top">
         <div className="container">
@@ -42,31 +39,22 @@ const Header = () => {
       <div className="header-main">
         <div className="container">
           <div className="header-content">
+
             {/* Logo */}
             <div className="logo-container">
-              <a href="#home" className="logo">
+              <Link to="/" className="logo">
                 <ShoppingBag className="logo-icon" />
                 <span className="logo-text">Luxora</span>
-              </a>
+              </Link>
             </div>
 
             {/* Desktop Navigation */}
             <nav className="nav desktop-nav">
-              <a href="#home" className="nav-link">
-                <span>Home</span>
-              </a>
-              <a href="#collections" className="nav-link">
-                <span>Collections</span>
-              </a>
-              <a href="#new-arrivals" className="nav-link">
-                <span>New Arrivals</span>
-              </a>
-              <a href="#sale" className="nav-link">
-                <span className="nav-link-sale">Sale</span>
-              </a>
-              <a href="#about" className="nav-link">
-                <span>About</span>
-              </a>
+              <Link to="/" className="nav-link">Home</Link>
+              <Link to="/products" className="nav-link">Collections</Link>
+              <Link to="/new-arrivals" className="nav-link">New Arrivals</Link>
+              <Link to="/sale" className="nav-link nav-link-sale">Sale</Link>
+              <Link to="/about" className="nav-link">About</Link>
             </nav>
 
             {/* Header Actions */}
@@ -82,11 +70,9 @@ const Header = () => {
               </a>
               <a href="#cart" className="header-action-btn cart-btn" aria-label="Shopping Cart">
                 <ShoppingBag size={20} />
-                {cartCount > 0 && (
-                  <span className="cart-count">{cartCount}</span>
-                )}
+                {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
               </a>
-              
+
               {/* Mobile Menu Toggle */}
               <button 
                 className="mobile-menu-toggle" 
@@ -100,40 +86,16 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Search Bar (Hidden by default, can be toggled) */}
-      <div className="search-bar-container">
-        <div className="container">
-          <div className="search-bar">
-            <Search className="search-icon" size={20} />
-            <input 
-              type="text" 
-              placeholder="Search for products..." 
-              className="search-input"
-            />
-            <button className="search-close">&times;</button>
-          </div>
-        </div>
-      </div>
-
       {/* Mobile Navigation */}
       <div className={`mobile-nav ${isMobileMenuOpen ? 'mobile-nav-open' : ''}`}>
         <nav className="mobile-nav-links">
-          <a href="#home" className="mobile-nav-link" onClick={toggleMobileMenu}>
-            Home
-          </a>
-          <a href="#collections" className="mobile-nav-link" onClick={toggleMobileMenu}>
-            Collections
-          </a>
-          <a href="#new-arrivals" className="mobile-nav-link" onClick={toggleMobileMenu}>
-            New Arrivals
-          </a>
-          <a href="#sale" className="mobile-nav-link mobile-nav-link-sale" onClick={toggleMobileMenu}>
-            Sale
-          </a>
-          <a href="#about" className="mobile-nav-link" onClick={toggleMobileMenu}>
-            About
-          </a>
+          <Link to="/" className="mobile-nav-link" onClick={toggleMobileMenu}>Home</Link>
+          <Link to="/products" className="mobile-nav-link" onClick={toggleMobileMenu}>Collections</Link>
+          <Link to="/new-arrivals" className="mobile-nav-link" onClick={toggleMobileMenu}>New Arrivals</Link>
+          <Link to="/sale" className="mobile-nav-link mobile-nav-link-sale" onClick={toggleMobileMenu}>Sale</Link>
+          
         </nav>
+
         <div className="mobile-nav-footer">
           <a href="#account" className="mobile-nav-footer-link">My Account</a>
           <a href="#customer-service" className="mobile-nav-footer-link">Customer Service</a>
