@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ShoppingBag, Search, User, Heart, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
+import './Header.css'; // Import 
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -50,11 +50,11 @@ const Header = () => {
 
             {/* Desktop Navigation */}
             <nav className="nav desktop-nav">
-              <Link to="/" className="nav-link">Home</Link>
-              <Link to="/products" className="nav-link">Collections</Link>
-              <Link to="/new-arrivals" className="nav-link">New Arrivals</Link>
-              <Link to="/sale" className="nav-link nav-link-sale">Sale</Link>
-              <Link to="/about" className="nav-link">About</Link>
+              <a href="#home" className="nav-link">Home</a>
+              <a href="#collections" className="nav-link">Collections</a>
+              <a href="#new-arrivals" className="nav-link">New Arrivals</a>
+              <a href="#sale" className="nav-link nav-link-sale">Sale</a>
+            <a href="#about" className="nav-link">About</a>
             </nav>
 
             {/* Header Actions */}
@@ -89,10 +89,10 @@ const Header = () => {
       {/* Mobile Navigation */}
       <div className={`mobile-nav ${isMobileMenuOpen ? 'mobile-nav-open' : ''}`}>
         <nav className="mobile-nav-links">
-          <Link to="/" className="mobile-nav-link" onClick={toggleMobileMenu}>Home</Link>
-          <Link to="/products" className="mobile-nav-link" onClick={toggleMobileMenu}>Collections</Link>
-          <Link to="/new-arrivals" className="mobile-nav-link" onClick={toggleMobileMenu}>New Arrivals</Link>
-          <Link to="/sale" className="mobile-nav-link mobile-nav-link-sale" onClick={toggleMobileMenu}>Sale</Link>
+          <a href="#home" className="mobile-nav-link" onClick={toggleMobileMenu}>Home</a>
+          <a href="#collections" className="mobile-nav-link" onClick={toggleMobileMenu}>Collections</a>
+          <a href="#new-arrivals" className="mobile-nav-link" onClick={toggleMobileMenu}>New Arrivals</a>
+          <a href="#sale" className="mobile-nav-link mobile-nav-link-sale" onClick={toggleMobileMenu}>Sale</a>
           
         </nav>
 
